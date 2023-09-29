@@ -1,0 +1,209 @@
+﻿/* inicio do reset do css */
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+    display: block;
+}
+
+body {
+    line-height: 1;
+}
+
+ol, ul {
+    list-style: none;
+}
+
+blockquote, q {
+    quotes: none;
+}
+
+    blockquote:before, blockquote:after,
+    q:before, q:after {
+        content: '';
+        content: none;
+    }
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+/* fim do reset do css */
+
+/* variaveis */
+:root {
+    /* variaveis de animação */
+
+    --animps: running;
+    --animt: 5s;
+    --opaa:0;
+    --opaicon:1;
+
+    /* variaveis de cor */
+
+    --colorl1: hsl(146, 100%, 50%);
+    --colorhl1: hsl(146, 100%, 75%);
+    --colorl2: hsl(140, 100%, 50%);
+    --colorhl2: hsl(140, 100%, 75%);
+    --colorl3: hsl(136, 100%, 50%);
+    --colorhl3: hsl(136, 100%, 75%);
+    --colorl4: hsl(132, 100%, 50%);
+    --colorhl4: hsl(132, 100%, 75%);
+    --fontcl: hsl(137, 100%, 4%);
+}
+
+
+
+
+body {
+  
+    
+  
+}
+
+/* difinição item orbita */
+
+.orbita {
+    display:grid;
+    align-items: center;
+    justify-content: center;
+    height:100px;
+    width:100px;
+    margin:10%;
+
+      
+}
+
+/* difinição item orbita - imagem central */
+
+.img_ctr{
+    border-radius: 20px;
+    width:100px;
+    position: relative;
+    place-self:center;
+    z-index:4;
+}
+
+/* difinição item orbita - animação da orbita */
+
+ul {
+    position: absolute;
+    display: flex;
+    flex-wrap:wrap;
+    gap:100px 100px;
+    animation: orbit var(--animt) infinite linear var(--animps);
+    width: 220px;
+    height: 220px;
+    place-self: center;
+}
+
+ul:hover {
+    --animps:paused;
+}
+
+/* difinição item orbita - itens de orbita e animação dos mesmos */
+
+li {
+    position: relative;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    animation: orbit var(--animt) infinite reverse linear var(--animps);
+  
+}
+    .l1 {
+        justify-content:start;
+        align-items:start;
+        background-color: var(--colorl1);
+
+    }
+    .l1:hover {
+            background-color: var(--colorhl1);
+            --opaa: 1;
+            --opaicon: 0;
+    }
+    .l2 {
+        justify-content: start;
+        align-items: end;
+        background-color: var(--colorl2);
+    }
+    .l2:hover {
+            background-color: var(--colorhl2);
+            --opaa: 1;
+            --opaicon: 0;
+    }
+    li.l3 {
+        justify-content: end;
+        align-items: start;
+        background-color: var(--colorl3);
+    }
+    .l3:hover {
+            background-color: var(--colorhl3);
+            --opaa: 1;
+            --opaicon: 0;
+    }
+    li.l4 {
+        justify-content: end;
+        align-items: end;
+        background-color: var(--colorl4);
+    }
+    .l4:hover {
+            background-color: var(--colorhl4);
+            --opaa: 1;
+            --opaicon: 0;
+    }
+ion-icon {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    width:30px;
+    height:30px;
+    opacity: var(--opaicon);
+
+}
+
+a {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    opacity: var(--opaa);
+   
+}
+
+/* Keyframe das animações */
+
+@keyframes orbit {
+
+    0% {
+        transform: rotate(0) scale(1,1);
+    }
+    50% {
+        transform: rotate(180deg) scale(1.1,1.1);
+    }
+    100% {
+        transform: rotate(360deg) scale(1,1);
+    }
+}
+    
