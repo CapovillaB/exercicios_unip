@@ -6,23 +6,26 @@ import jakarta.persistence.*;
 import lombok.*;
 
 @Entity
-@NoArgsConstructor
+@Getter
+@Setter
 @AllArgsConstructor
+@NoArgsConstructor
 public class Aluno {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Setter
-    @Getter
     private int matricula;
-
-    @Getter
-    @Setter
     private String nome;
-
-    @DateTimeFormat(pattern="yyyy-MM-dd")
-    @Getter
-    @Setter
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date dataNascimento;
+    @ManyToOne
+    @JoinColumn(name = "tcc_codigo")
+    private Tcc tcc;
+
+    public Aluno(int matricula, String nome, Date dataNascimento) {
+        this.matricula = matricula;
+        this.nome = nome;
+        this.dataNascimento = dataNascimento;
+    }
 
     public Aluno(String nome, Date dataNascimento) {
         this.nome = nome;
