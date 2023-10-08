@@ -1,13 +1,13 @@
-package com;
+package com.unip.universidade;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class UnipApplication {
+public class UniversidadeApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(UnipApplication.class, args);
+		SpringApplication.run(UniversidadeApplication.class, args);
 	}
 
 }
