@@ -1,6 +1,7 @@
 package com.model;
 
 import jakarta.persistence.*;
+import org.springframework.boot.validation.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -16,12 +17,16 @@ import lombok.*;
     
     @Id 
     @GeneratedValue(strategy = GenerationType.IDENTITY) 
-    private int codigo; 
-    private String titulo; 
-    private int ano; 
+    private int codigo;
+    @Pattern(regexp = "^ALPOO:(\\s|[A-Z]|[a-z]){1,50}$", message = "valor deve iniciar com \"ALPOO:\" e ter um tamanho máximo de 50")
+    private String titulo;
+    @Min(1950) @Max(2023) 
+    private int ano;
+    @Min(1) @Max(2)
     private int semestre; 
     
-    @OneToMany(mappedBy = "tcc", cascade = CascadeType.ALL) 
+    @OneToMany(mappedBy = "tcc", cascade = CascadeType.ALL)
+    @Size(min=1, max=4)
     private List<Aluno> alunosGrupo = new ArrayList<>(); 
     
     public Tcc(String titulo, int ano, int semestre, List<Aluno> alunosGrupo) { 

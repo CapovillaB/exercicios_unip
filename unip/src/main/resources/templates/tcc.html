@@ -26,12 +26,18 @@
         </tbody>
     </table>
 
-    <form method="POST" th:object="${tcc}" th:action="@{/cadastro}"> Título: <input type="text" name="titulo"
-            th:field="*{titulo}"><br> Ano: <input type="text" name="ano" th:field="*{ano}"><br> Semestre: <input
-            type="text" name="semestre" th:field="*{semestre}"><br> Alunos:<br> <select name="alunosGrupo"
-            th:field="*{alunosGrupo}" multiple>
-            <option th:each="aluno: ${listaAlunos}" th:value="${aluno.matricula}" th:text="${aluno.nome}"></option>
-        </select><br> <input type="submit" value="Salvar"></input> </form>
+    <form method="POST" th:object="${tcc}" th:action="@{/cadastro}">
+        Título: <input type="text" name="titulo" th:field="*{titulo}"> 
+            <span class="validationError"
+            h:if="${#fields.hasErrors('titulo')}" th:errors="*{titulo}" style="color:red"></span><br>
+        Ano: <input type="text" name="ano" th:field="*{ano}"> <span class="validationError" th:if="${#fields.hasErrors('ano')}"
+            th:errors="*{ano}" style="color:red"></span><br> 
+        Semestre: <input type="text" name="semestre" th:field="*{semestre}"> <span class="validationError" th:if="${#fields.hasErrors('semestre')}"
+            th:errors="*{semestre}" style="color:red"></span><br> 
+        Alunos: <span class="validationError" th:if="${#fields.hasErrors('alunosGrupo')}" th:errors="*{alunosGrupo}" style="color:red"></span><br> <select
+            name="alunosGrupo" th:field="*{alunosGrupo}" multiple>
+            <input type="submit" value="Salvar"></input>
+    </form>
 </body>
 
 </html>
