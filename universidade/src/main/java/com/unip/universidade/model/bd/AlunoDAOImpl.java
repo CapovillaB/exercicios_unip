@@ -21,7 +21,7 @@ public class AlunoDAOImpl implements AlunoDAO {
     public List<Aluno> listarAlunos() {
         List<Aluno> lista = null;
         try {
-            Connection conn = DriverManager.getConnection("jdbc:h2:C:/Users/elisa/Downloads/universidade", "teste", "teste");
+            Connection conn = DriverManager.getConnection("jdbc:h2:D:universidade", "dba", "1234");
             Statement stat = conn.createStatement();
             ResultSet rs = stat.executeQuery("select * from aluno");
             lista = new ArrayList<Aluno>();
@@ -38,7 +38,7 @@ public class AlunoDAOImpl implements AlunoDAO {
     public boolean inserirAluno(Aluno aluno) {
         boolean retorno = false;
         try {
-            Connection conn = DriverManager.getConnection("jdbc:h2:C:/Users/elisa/Downloads/universidade", "teste", "teste");
+            Connection conn = DriverManager.getConnection("jdbc:h2:D:universidade", "dba", "1234");
             PreparedStatement pStat = conn.prepareStatement("insert into aluno(nome, data_nascimento) values (?, ?)");
             pStat.setString(1, aluno.getNome());
             pStat.setDate(2, new Date(aluno.getDataNascimento().getTime()));
